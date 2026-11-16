@@ -1,0 +1,12 @@
+relationship 9bc2e97d-bb70-415a-b9f6-1bdc11ddd01e
+	fromColumn: Tickets.CreatedDate
+	toColumn: Calendar.Date
+
+relationship 0b062da0-e4c3-4c5c-84be-51a1ae33ab01
+	fromColumn: Tickets.QueueId
+	toColumn: Queues.QueueId
+
+relationship 492c611b-ac8c-44a9-a2a3-17accc7aa57f
+	fromColumn: Tickets.PriorityId
+	toColumn: Priorities.PriorityId
+

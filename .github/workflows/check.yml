@@ -1,0 +1,13 @@
+name: Power BI data checks
+on: [push, pull_request]
+jobs:
+  model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python generate.py
+      - run: python build_report.py
+      - run: python verify.py

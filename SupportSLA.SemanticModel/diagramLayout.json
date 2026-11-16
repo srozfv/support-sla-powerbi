@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 50,
+            "y": -50
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "261a29b0-4d4d-4bc2-9a56-8cfd971025c4",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 160.42383639149381,
+            "y": 478.36673322600382
+          },
+          "nodeIndex": "Priorities",
+          "nodeLineageTag": "d40af47d-0425-437d-b912-3178d4c5e134",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 542.290071722215,
+            "y": 157.37683315159
+          },
+          "nodeIndex": "Queues",
+          "nodeLineageTag": "a666e3f9-1b66-439c-88cc-c663541e9e1c",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 258.08302539292708,
+            "y": 128.16950030191811
+          },
+          "nodeIndex": "Tickets",
+          "nodeLineageTag": "7574f57b-58e8-4950-aab6-7f7037f9728b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Все таблицы",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Все таблицы",
+  "defaultDiagram": "Все таблицы"
+}

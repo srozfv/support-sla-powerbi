@@ -1,0 +1,29 @@
+table Calendar
+	lineageTag: 261a29b0-4d4d-4bc2-9a56-8cfd971025c4
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 5b6ef8ee-0a06-4bfd-b829-abf8cd627ff2
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MonthKey
+		dataType: string
+		lineageTag: 9974e331-76b4-4adf-aa58-0101ca11a1ba
+		summarizeBy: none
+		sourceColumn: MonthKey
+
+	partition Calendar = m
+		mode: import
+		source =
+				let
+				    Packed = "ddO7jUMxDETRXl5sAyL1r8Vw/21stNBo4BsSJ7oA5/N5smR/l/ku8bz+j+f7EkiCStAIOsEgmASLYANEIaDyoPKg8qDyoPKg8qDyoPKg8qTypPKk8qTypPKk8qTypPKk8qTySuX1d/nSGawbkqASNIJOMAgmwSLYADIDAyqXGRhQuczAgMplBgZULjMwoHKZgQGVywwMqFxmYEDlMgMDKpcZGFC5zMDgd/nWGewbkqASNIJOMAgmwSLYADIDAyqXGRhQuczAgMplBgZULjMwoHKZgQGVywwMqFxmYEDlMgMDKpcZGFC5zEAginx7lBuSoBI0gk4wCCbBItgA59sdqPx8uwOVn293oPLz7Q5Ufr7dgcrPtztQ+fl2Byo/3+5A5efbHaj8fLsDlZ9vd/hdHjqDuCEJKkEj6ASDYBIsgg0gMzCgcpmBAZXLDAyoXGZgQOUyAwMqlxkYULnMwIDKZQYGVC4zMKBymYEBlcsMFFK/PW9IgkrQCDrBIJgEi2ADyLcbULl8uwGVy7cbULl8uwGVy7cbULl8uwGVJ5XLtxtQuXy7AZXLtxtQuXz7DfLtBlf59w8=",
+				    Bytes = Binary.Decompress(Binary.FromText(Packed, BinaryEncoding.Base64), Compression.Deflate),
+				    Raw = #table({"Date", "MonthKey"}, Json.Document(Bytes)),
+				    Typed = Table.TransformColumnTypes(Raw, {{"Date", type date}, {"MonthKey", type text}}, "en-US")
+				in
+				    Typed
+

@@ -1,0 +1,33 @@
+table Priorities
+	lineageTag: d40af47d-0425-437d-b912-3178d4c5e134
+
+	column PriorityId
+		dataType: int64
+		isHidden
+		lineageTag: d22f6fcc-5998-44dd-8a88-7bd7ab29d353
+		summarizeBy: none
+		sourceColumn: PriorityId
+
+	column Priority
+		dataType: string
+		lineageTag: c9791271-4793-47d3-bbd7-ccb62289a45d
+		summarizeBy: none
+		sourceColumn: Priority
+
+	column TargetMinutes
+		dataType: int64
+		lineageTag: 030d93f1-2a57-484b-8663-fb998d920304
+		summarizeBy: none
+		sourceColumn: TargetMinutes
+
+	partition Priorities = m
+		mode: import
+		source =
+				let
+				    Packed = "i4421FEKMFTSMTOI1Yk20lEKMFLSMTIBcYx1lAKMlXQMTUwMYmMB",
+				    Bytes = Binary.Decompress(Binary.FromText(Packed, BinaryEncoding.Base64), Compression.Deflate),
+				    Raw = #table({"PriorityId", "Priority", "TargetMinutes"}, Json.Document(Bytes)),
+				    Typed = Table.TransformColumnTypes(Raw, {{"PriorityId", Int64.Type}, {"Priority", type text}, {"TargetMinutes", Int64.Type}}, "en-US")
+				in
+				    Typed
+

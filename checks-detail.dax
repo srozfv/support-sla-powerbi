@@ -1,0 +1,10 @@
+EVALUATE
+FILTER(
+    SUMMARIZECOLUMNS(
+        Tickets[TicketId], 'Queues'[Queue], Priorities[Priority],
+        Tickets[CreatedAt], Tickets[DeadlineAt],
+        "Open", [Просрочено без ответа]
+    ),
+    [Open] > 0
+)
+ORDER BY Tickets[DeadlineAt], Tickets[TicketId]

@@ -1,0 +1,22 @@
+model Model
+	culture: ru-RU
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Tickets","Calendar","Queues","Priorities"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Tickets
+ref table Calendar
+ref table Queues
+ref table Priorities
+
+ref cultureInfo ru-RU
+
