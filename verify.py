@@ -134,8 +134,13 @@ class ModelChecks(unittest.TestCase):
                         kind, expr = next(iter(projection["field"].items()))
                         entity = expr["Expression"]["SourceRef"]["Entity"]
                         prop = expr["Property"]
-                        token = f"column {prop}\n" if kind == "Column" else f"measure '{prop}' ="
-                        self.assertIn(token, model[entity])
+                        quoted = "'" + prop.replace("'", "''") + "'"
+                        names = f"(?:{re.escape(prop)}|{re.escape(quoted)})"
+                        declaration = (
+                            rf"(?m)^\tcolumn {names}\s*$"
+                            if kind == "Column" else rf"(?m)^\tmeasure {names}\s*="
+                        )
+                        self.assertTrue(re.search(declaration, model[entity]), f"Missing {entity}.{prop}")
 
 
 if __name__ == "__main__":
